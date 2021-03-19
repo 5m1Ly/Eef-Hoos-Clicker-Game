@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="De Eef Hoos Clicker game is gebaseerd op het leven van "de Haagse Al Capone" Evert Hendrik (Eef) Hoos. terwijl je incasso’s pleegt kom je er gaandeweg achter wie Eef Hoos is, waar hij zich mee bezighield en waarom hij het deed.">
+    <meta name="keywords" content="Eef, Hoos, Clicker, Game, Idle">
+
+    <!-- Bootstrap v5.0.0-beta2 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="./js/jquery/jquery.js"></script>
+    <script src="./js/game.js"></script>
+
+    <title>Eef Hoos Clicker Game</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 top_left">
+                <div class="row">
+                    <div class="col-12">
+                        <h2>Upgrades</h2>
+                    </div>
+                    <div class="col-12">
+                        <div class="row" id="buttonBox">
+                            <!-- upgrade buttons -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <h2>Progress</h2>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="row">
+                            <div class="col-12" id="imgBox">
+                                <!-- img gets placed here -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="row">
+                            <div class="col-3">
+                                <p id="level">Level: 1</p>
+                            </div>
+                            <div class="col-9">
+                                <p id="exp">exp: 0/500</p>
+                            </div>
+                            <div class="col-12 text-center pt-4 pb-4">
+                                <h3 id="money">€0,-</h3>
+                            </div>
+                            <input type="button" value="incasso" class="col-12 btn btn-primary" onclick="incasso()">
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-12 pt-2 pe-0">
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" id="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
