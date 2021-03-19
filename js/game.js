@@ -13,9 +13,9 @@ let Game = {
             id: 0,
             name: "Auto Diefstal",
             icon: "fa fa-car fa-3x",
-            moneyPerClickToAdd: 0.1,
+            moneyPerClickToAdd: 0.5,
             moneyPerSecondToAdd: 0,
-            expPerClickToAdd: 0.25,
+            expPerClickToAdd: 1,
             cost: 10,
             amountBought: 0,
             message: "We hebben een inval gedaan bij een lood waarbij een aantal gestolen auto's zijn aangetroffen. deze werden vermoedelijk gebruikt voor bom aanslagen bij wanbetalers in het criminele circuit.",
@@ -37,9 +37,9 @@ let Game = {
             id: 2,
             name: "Transport Verzekering",
             icon: "fa fa-truck fa-3x",
-            moneyPerClickToAdd: 1,
+            moneyPerClickToAdd: 5,
             moneyPerSecondToAdd: 0,
-            expPerClickToAdd: 0.75,
+            expPerClickToAdd: 2.5,
             cost: 1000,
             amountBought: 0,
             message: "We hebben vanavond rond 23:00 vier vrachtwagens staande gehouden. er was een vuurgevecht alle verdachten zijn aangehouden en in de vrachtwagens zijn 200kg aan hajs gevonden waarschijnlijk was dit een transport van de beruchte klaas bruinsma.",
@@ -61,9 +61,9 @@ let Game = {
             id: 4,
             name: "Emperium Uitbrijding",
             icon: "fa fa-users fa-3x",
-            moneyPerClickToAdd: 10,
+            moneyPerClickToAdd: 25,
             moneyPerSecondToAdd: 0,
-            expPerClickToAdd: 2,
+            expPerClickToAdd: 5,
             cost: 10000,
             amountBought: 0,
             message: "We hebben vandaag 3 verdachte aangehouden die betrokken waren bij het importeren van de explosive stof cemtex.",
@@ -83,7 +83,7 @@ let Game = {
         }
     ],
     gameValues: {
-        levelMultiplier: 2.6,
+        levelMultiplier: 1.5,
         upgradeCostMultiplier: 1.25,
         lossNumber: Math.floor(Math.random()*100)+1,
         lossOn: [1, 7, 34, 59],
@@ -181,7 +181,7 @@ let Game = {
 function incasso() {
     Game.user.money += Game.user.moneyPerClick;
     addExp();
-    drawMoney();
+    updateMoney();
 }
 
 // adds exp to the player its current exp amount whenever the function is called
@@ -214,8 +214,8 @@ function buyUpgrade(upId) {
                 up.amountBought++;
 
                 addExp();
-                drawMoney();
-                drawCost(upId);
+                updateMoney();
+                updateCost(upId);
             }
         }
     }
@@ -227,20 +227,14 @@ function drawButtons() {
     for (let i = 0; i < Game.upgrades.length; i++) {
         const button = Game.upgrades[i];
         let newButton = `
-            <button class="col-6 mb-2" id="upgrade" value="${button.id}" onclick="buyUpgrade(this.value)">
+            <button class="col-11 col-lg-5 mb-2" id="upgrade" value="${button.id}" onclick="buyUpgrade(this.value)">
                 <div class="row">
                     <div class="col-2 my-auto pt-2 pb-2">
                         <i class="${button.icon}" aria-hidden="true"></i>
                     </div>
                     <div class="col-10 my-auto pt-2">
-                        <div class="row">
-                            <div class="col-6">
-                                <p id="bought" value="${button.id}">Aantal gekocht: ${button.amountBought}</p>
-                            </div>
-                            <div class="col-6">
-                                <p id="cost" value="${button.id}">cost: €${button.cost},-</p>
-                            </div>
-                        </div>
+                        <p id="bought" value="${button.id}">x Gekocht: ${button.amountBought}</p>
+                        <p id="cost" value="${button.id}">Cost: €${drawNum(button.cost)},-</p>
                     </div>
                 </div>        
             </button>
@@ -250,11 +244,11 @@ function drawButtons() {
     $('#buttonBox').append(upgradeButtons);
 }
 
-// displays money
-function drawMoney() {
-    let money = Math.floor(Game.user.money);
-    let dotMoney = money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-    $('#money').text(`€${dotMoney},-`)
+// adds a dot every 3 characters to the given numbner
+function drawNum(num) {
+    let newNum = Math.floor(num);
+    let dotNum = newNum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    return dotNum;
 }
 
 // displays image based on level
@@ -277,18 +271,20 @@ function drawImg() {
     }
 }
 
-function drawCost(upId) {
-    let cost = Math.floor(Game.upgrades[upId].cost);
-    let dotCost = cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-    $(`#bought[value='${upId}']`).text(`Aantal Gekocht: ${Game.upgrades[upId].amountBought}`)
-    $(`#cost[value='${upId}']`).text(`Cost: €${dotCost},-`)
+function updateMoney() {
+    $('#money').text(`€${drawNum(Game.user.money)},-`);
+}
+
+function updateCost(upId) {
+    $(`#bought[value='${upId}']`).text(`x Gekocht: ${Game.upgrades[upId].amountBought}`)
+    $(`#cost[value='${upId}']`).text(`Cost: €${drawNum(Game.upgrades[upId].cost)},-`)
 }
 
 function animateProgresBar(exp, expNeeded) {
-    let progres = (exp/expNeeded)*100;
+    let progres = (Math.floor(exp)/Math.floor(expNeeded))*100;
     
     $('#level').text(`Level: ${Game.user.level}`)
-    $('#exp').text(`exp: ${exp}/${expNeeded}`);
+    $('#exp').text(`exp: ${drawNum(exp)}/${drawNum(expNeeded)}`);
     $('#progressbar').animate({width: progres+"%"}, 1);
 
 }
@@ -296,7 +292,7 @@ function animateProgresBar(exp, expNeeded) {
 $(document).ready(function() {
     drawButtons();
     drawImg();
-    drawCost();
+    updateCost();
 });
 
 
