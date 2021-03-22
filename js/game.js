@@ -1,8 +1,8 @@
 let Game = {
     user: {
         money: 0,
-        moneyPerClick: 1,
-        moneyPerSecond: 0,
+        mpc: 1,
+        mps: 0,
         level: 1,
         exp: 0,
         expNeeded: 500,
@@ -25,8 +25,8 @@ let Game = {
             name: "Inbreken",
             icon: "fa fa-home fa-3x",
             moneyPerClickToAdd: 0,
-            moneyPerSecondToAdd: 0.1,
-            expPerClickToAdd: 0.5,
+            moneyPerSecondToAdd: 1,
+            expPerClickToAdd: 1,
             cost: 500,
             amountBought: 0,
             message: "We hebben vanochtend een inbreker gepakt met een tas vol met siraden, goud, autoradio's, en contant geld."
@@ -47,8 +47,8 @@ let Game = {
             name: "Witwas Operatie",
             icon: "fa fa-building-o fa-3x",
             moneyPerClickToAdd: 0,
-            moneyPerSecondToAdd: 1,
-            expPerClickToAdd: 1,
+            moneyPerSecondToAdd: 5,
+            expPerClickToAdd: 2.5,
             cost: 5000,
             amountBought: 0,
             message: "We zijn vanochten om 3:40 bij 4 panden binnen gevallen die mogelijk betrokken zijn bij grote witwas operatie's"
@@ -69,7 +69,7 @@ let Game = {
             name: "Explosiven inkoop",
             icon: "fa fa-bomb fa-3x",
             moneyPerClickToAdd: 0,
-            moneyPerSecondToAdd: 10,
+            moneyPerSecondToAdd: 25,
             expPerClickToAdd: 5,
             cost: 50000,
             amountBought: 0,
@@ -192,7 +192,7 @@ let Game = {
 
 // makes the incasso button add money to the user its wallet
 function incasso() {
-    Game.user.money += Game.user.moneyPerClick;
+    Game.user.money += Game.user.mpc;
     addExp();
     updateMoney();
 }
@@ -213,6 +213,11 @@ function addExp() {
     }
 }
 
+window.setInterval(function addExp() {
+    Game.user.money += Game.user.mps;
+    updateMoney();
+}, 1000);
+
 // if the user clicks the button and has enough money it buys the upgrade
 function buyUpgrade(upId) {
     for (let i = 0; i < Game.upgrades.length; i++) {
@@ -222,9 +227,9 @@ function buyUpgrade(upId) {
                 let lossVal = Math.floor(Math.random()*100)+1;
                 let lossPercent = Math.floor(Math.random()*15)+1;
                 if (Game.gameValues.lossOn.includes(lossVal)) {
-                    Game.user.moneyPerClick -= ((up.moneyPerClickToAdd/100)*lossPercent);
-                    Game.user.moneyPerSecond -= ((up.moneyPerSecondToAdd/100)*lossPercent);
-                    Game.user.expPerClick -= ((up.expPerClickToAdd/100)*lossPercent);
+                    Game.user.mpc -= ((Game.user.mpc/100)*lossPercent);
+                    Game.user.mps -= ((Game.user.mps/100)*lossPercent);
+                    Game.user.expPerClick -= ((Game.user.expPerClick/100)*lossPercent);
                     up.amountBought -= ((up.amountBought/100)*lossPercent);
 
                     let afzender = "@Politie"
@@ -237,8 +242,8 @@ function buyUpgrade(upId) {
                     updateCost(upId);
                 } else {
                     Game.user.money -= up.cost;
-                    Game.user.moneyPerClick += up.moneyPerClickToAdd;
-                    Game.user.moneyPerSecond += up.moneyPerSecondToAdd;
+                    Game.user.mpc += up.moneyPerClickToAdd;
+                    Game.user.mps += up.moneyPerSecondToAdd;
                     Game.user.expPerClick += up.expPerClickToAdd;
                     
                     up.cost *= Game.gameValues.upgradeCostMultiplier;
@@ -308,7 +313,7 @@ function updateMoney() {
 }
 
 function updateCost(upId) {
-    $(`#bought[value='${upId}']`).text(`x Gekocht: ${Game.upgrades[upId].amountBought}`)
+    $(`#bought[value='${upId}']`).text(`x Gekocht: ${Math.floor(Game.upgrades[upId].amountBought)}`)
     $(`#cost[value='${upId}']`).text(`Cost: €${drawNum(Game.upgrades[upId].cost)},-`)
 }
 
@@ -329,7 +334,9 @@ function animateProgresBar(exp, expNeeded) {
 $(document).ready(function() {
     drawButtons();
     drawImg();
-    updateCost();
+    updateCost(0, 1, 2, 3, 4, 5);
+    
+    addExp();
 });
 
 
