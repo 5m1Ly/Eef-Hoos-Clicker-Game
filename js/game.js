@@ -18,8 +18,7 @@ let Game = {
             expPerClickToAdd: 1,
             cost: 10,
             amountBought: 0,
-            message: "We hebben een inval gedaan bij een lood waarbij een aantal gestolen auto's zijn aangetroffen. deze werden vermoedelijk gebruikt voor bom aanslagen bij wanbetalers in het criminele circuit.",
-            info: "Een auto diefstal kost nu : €%cost%,-"
+            message: "We hebben een inval gedaan bij een lood waarbij een aantal gestolen auto's zijn aangetroffen. deze werden vermoedelijk gebruikt voor bom aanslagen bij wanbetalers in het criminele circuit."
         },
         {
             id: 1,
@@ -30,8 +29,7 @@ let Game = {
             expPerClickToAdd: 0.5,
             cost: 500,
             amountBought: 0,
-            message: "We hebben vanochtend een inbreker gepakt met een tas vol met siraden, goud, autoradio's, en €2000,- contant geld.",
-            info: "Inbreken kost nu: €%cost%,-"
+            message: "We hebben vanochtend een inbreker gepakt met een tas vol met siraden, goud, autoradio's, en contant geld."
         },
         {
             id: 2,
@@ -42,8 +40,7 @@ let Game = {
             expPerClickToAdd: 2.5,
             cost: 1000,
             amountBought: 0,
-            message: "We hebben vanavond rond 23:00 vier vrachtwagens staande gehouden. er was een vuurgevecht alle verdachten zijn aangehouden en in de vrachtwagens zijn 200kg aan hajs gevonden waarschijnlijk was dit een transport van de beruchte klaas bruinsma.",
-            info: "Een verzekering afsluiten op een drugs transport/deal kost nu: €%cost%,-"
+            message: "We hebben vanavond rond 23:00 vier vrachtwagens staande gehouden. er was een vuurgevecht alle verdachten zijn aangehouden en in de vrachtwagens zijn 200kg aan hajs gevonden waarschijnlijk was dit een transport van de beruchte klaas bruinsma."
         },
         {
             id: 3,
@@ -54,8 +51,7 @@ let Game = {
             expPerClickToAdd: 1,
             cost: 5000,
             amountBought: 0,
-            message: "We zijn vanochten om 3:40 bij 4 panden binnen gevallen die mogelijk betrokken zijn bij grote witwas operatie's",
-            info: "Een georganiseerde witwasserette opzetten kost nu: €%cost%,-"
+            message: "We zijn vanochten om 3:40 bij 4 panden binnen gevallen die mogelijk betrokken zijn bij grote witwas operatie's"
         },
         {
             id: 4,
@@ -66,8 +62,7 @@ let Game = {
             expPerClickToAdd: 5,
             cost: 10000,
             amountBought: 0,
-            message: "We hebben vandaag 3 verdachte aangehouden die betrokken waren bij het importeren van de explosive stof cemtex.",
-            info: "Mensen zoeken voor jou criminele organisatie kost nu: €%cost%,-"
+            message: "We hebben vandaag 3 verdachte aangehouden die betrokken waren bij het importeren van de explosive stof cemtex."
         },
         {
             id: 5,
@@ -78,96 +73,93 @@ let Game = {
             expPerClickToAdd: 5,
             cost: 50000,
             amountBought: 0,
-            message: "We zijn vandaag bij een loods binnen gevallen waarbij 6 containers zijn aangetroffen met profesionele bommen.",
-            info: "Onderdelen & Explosieven inkopen om bommen te maken kost nu: €%cost%,-"
+            message: "We zijn vandaag bij een loods binnen gevallen waarbij 6 containers zijn aangetroffen met profesionele bommen."
         }
     ],
     gameValues: {
         levelMultiplier: 1.5,
         upgradeCostMultiplier: 1.25,
-        lossNumber: Math.floor(Math.random()*100)+1,
-        lossOn: [1, 7, 34, 59],
-        lossPercentage: Math.floor(Math.random()*15)+1
+        lossOn: [1, 7, 34, 59]
     },
     levels: [
         {
             img: "./img/eef1.jpg",
-            afzender: "Eef Hoos",
+            afzender: "@Eef Hoos",
             message: "Hoe werkt dit pleuris ding dan"
         },
         {
             img: "./img/eef1.jpg",
-            afzender: "Eef Hoos",
+            afzender: "@Eef Hoos",
             message: "Hoe werkt dit pleuris ding dan"
         },
         {
             img: "./img/eef1.jpg",
-            afzender: "Eef Hoos",
+            afzender: "@Eef Hoos",
             message: "Heb het eidelijk uitgevonden. niet met dank aan jullie. 😉"
         },
         {
             img: "./img/eef1.jpg",
-            afzender: "Eef Hoos",
+            afzender: "@Eef Hoos",
             message: "Voor de mensen die mij nog niet kennen ik ben Evert Hendrik Hoos maar jullie mogen mij Eef noemen."
         },
         {
             img: "./img/eef2.jpg",
-            afzender: "Eef Hoos",
+            afzender: "@Eef Hoos",
             message: "Ik was zeventien toen ik voor het eerst de gevangenis in ging. Ik was vijftig toen ik er voor de laatste keer uit kwam."
         },
         {
             img: "./img/eef2.jpg",
-            afzender: "Eef Hoos",
+            afzender: "@Eef Hoos",
             message: "Ik ben het incassobureau Toetanchamon begonnen. Ik heb een kantoor op het plein in den haag. met een parchtig uitzicht"
         },
         {
             img: "./img/eef2.jpg",
-            afzender: "Eef Hoos",
+            afzender: "@Eef Hoos",
             message: "Mijn incasso bureau was niet officieel gecertificeerd dus ik kon gwn mijn gang gaan."
         },
         {
             img: "./img/eef2.jpg",
-            afzender: "Eef Hoos",
+            afzender: "@Eef Hoos",
             message: "Bekijk het nieuwe reclame filmptje eens https://www.youtube.com/watch?v=XxOKcX73KYI"
         },
         {
             img: "./img/eef3.jpg",
-            afzender: "Eef Hoos",
+            afzender: "@Eef Hoos",
             message: "Mensen konden voor 2500€ een incasso bij mij aanvragen dan ging ik degene bij wie ik een incasso moet plegen onderzoeken en dat kost geld. Als het dan zover was dan ging ik incaseren."
         },
         {
             img: "./img/eef3.jpg",
-            afzender: "Eef Hoos",
+            afzender: "@Eef Hoos",
             message: "Vandaag weer een incasso gedaan die verliep heel zoepel https://www.youtube.com/watch?v=YV1MjBP05wg"
         },
         {
             img: "./img/eef3.jpg",
-            afzender: "Eef Hoos",
+            afzender: "@Eef Hoos",
             message: "Lekker dan 2 oude werknemers van mij hebben een bom bij de haagse courant laten ontploffen. nu mag ik er voor opdraaien."
         },
         {
             img: "./img/eef3.jpg",
-            afzender: "Eef Hoos",
+            afzender: "@Eef Hoos",
             message: "Vandaag rechtzaak over de bom aanslagen op de haagse courant."
         },
         {
             img: "./img/eef4.jpg",
-            afzender: "Eef Hoos",
+            afzender: "@Eef Hoos",
             message: "Ik moet dus 10 jaar zitten voor iets wat ik niet heb gedaan, lekker dan."
         },
         {
             img: "./img/eef4.jpg",
-            afzender: "Eef Hoos",
+            afzender: "@Eef Hoos",
             message: "Zaai hier."
         },
         {
             img: "./img/eef4.jpg",
-            afzender: "Eef Hoos",
+            afzender: "@Eef Hoos",
             message: "Duurt nog wel even voor dat ik hier uit ben."
         },
         {
             img: "./img/eef4.jpg",
-            afzender: "Eef Hoos",
+            afzender: "@Eef Hoos",
             message: "Dat is mooi sta ik gewoon 3 jaar eerder buiten dan afgesproken."
         },
         {
@@ -177,22 +169,22 @@ let Game = {
         },
         {
             img: "./img/eef5.jpg",
-            afzender: "Eef Hoos",
+            afzender: "@Eef Hoos",
             message: "Met ex-gedetineerden maakt ik nu vanuit stichting Themis zijn naam een dag blad genaamt The mis-Take naar gedetineerden in de gevangenis."
         },
         {
             img: "./img/eef5.jpg",
-            afzender: "Eef Hoos",
+            afzender: "@Eef Hoos",
             message: "Er is vandaag een bom aanslag gepleegd op het kantoor van stichting Themis."
         },
         {
             img: "./img/eef5.jpg",
-            afzender: "Eef Hoos",
+            afzender: "@Eef Hoos",
             message: "Ik denkt dat ik naar het buiten land ga het word mij wat te heet onder de voeten hier."
         },
         {
             img: "./img/eef6.jpg",
-            afzender: "Eef Hoos",
+            afzender: "@Eef Hoos",
             message: "Zijn we dan lekker in het zwembad van mijn nieuwe villa in portugal, bleek dus dat ze hier nog geen incassobureau hadden dus ben ik er zelf incassobureau Themis begonnen. https://www.youtube.com/watch?v=86xB-jghDGs"
         }
     ]
@@ -225,19 +217,37 @@ function addExp() {
 function buyUpgrade(upId) {
     for (let i = 0; i < Game.upgrades.length; i++) {
         const up = Game.upgrades[i];
-        if (up.id == upId) {7
+        if (up.id == upId) {
             if (Game.user.money >= up.cost) {
-                Game.user.money -= up.cost;
-                Game.user.moneyPerClick += up.moneyPerClickToAdd;
-                Game.user.moneyPerSecond += up.moneyPerSecondToAdd;
-                Game.user.expPerClick += up.expPerClickToAdd;
-                
-                up.cost *= Game.gameValues.upgradeCostMultiplier;
-                up.amountBought++;
+                let lossVal = Math.floor(Math.random()*100)+1;
+                let lossPercent = Math.floor(Math.random()*15)+1;
+                if (Game.gameValues.lossOn.includes(lossVal)) {
+                    Game.user.moneyPerClick -= ((up.moneyPerClickToAdd/100)*lossPercent);
+                    Game.user.moneyPerSecond -= ((up.moneyPerSecondToAdd/100)*lossPercent);
+                    Game.user.expPerClick -= ((up.expPerClickToAdd/100)*lossPercent);
+                    up.amountBought -= ((up.amountBought/100)*lossPercent);
 
-                addExp();
-                updateMoney();
-                updateCost(upId);
+                    let afzender = "@Politie"
+                    let newMessage = up.message + ` Je hebt nu ${lossPercent}% minder inkomen & van deze upgrade verloren.`
+
+                    updateTwitter(newMessage, afzender);
+
+                    addExp();
+                    updateMoney();
+                    updateCost(upId);
+                } else {
+                    Game.user.money -= up.cost;
+                    Game.user.moneyPerClick += up.moneyPerClickToAdd;
+                    Game.user.moneyPerSecond += up.moneyPerSecondToAdd;
+                    Game.user.expPerClick += up.expPerClickToAdd;
+                    
+                    up.cost *= Game.gameValues.upgradeCostMultiplier;
+                    up.amountBought++;
+    
+                    addExp();
+                    updateMoney();
+                    updateCost(upId);
+                }
             }
         }
     }
