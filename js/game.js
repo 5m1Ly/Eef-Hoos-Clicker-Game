@@ -92,86 +92,107 @@ let Game = {
     levels: [
         {
             img: "./img/eef1.jpg",
-            message: ""
+            afzender: "Eef Hoos",
+            message: "Hoe werkt dit pleuris ding dan"
         },
         {
             img: "./img/eef1.jpg",
-            message: ""
+            afzender: "Eef Hoos",
+            message: "Hoe werkt dit pleuris ding dan"
         },
         {
             img: "./img/eef1.jpg",
+            afzender: "Eef Hoos",
             message: "Heb het eidelijk uitgevonden. niet met dank aan jullie. 😉"
         },
         {
             img: "./img/eef1.jpg",
+            afzender: "Eef Hoos",
             message: "Voor de mensen die mij nog niet kennen ik ben Evert Hendrik Hoos maar jullie mogen mij Eef noemen."
         },
         {
             img: "./img/eef2.jpg",
+            afzender: "Eef Hoos",
             message: "Ik was zeventien toen ik voor het eerst de gevangenis in ging. Ik was vijftig toen ik er voor de laatste keer uit kwam."
         },
         {
             img: "./img/eef2.jpg",
+            afzender: "Eef Hoos",
             message: "Ik ben het incassobureau Toetanchamon begonnen. Ik heb een kantoor op het plein in den haag. met een parchtig uitzicht"
         },
         {
             img: "./img/eef2.jpg",
+            afzender: "Eef Hoos",
             message: "Mijn incasso bureau was niet officieel gecertificeerd dus ik kon gwn mijn gang gaan."
         },
         {
             img: "./img/eef2.jpg",
+            afzender: "Eef Hoos",
             message: "Bekijk het nieuwe reclame filmptje eens https://www.youtube.com/watch?v=XxOKcX73KYI"
         },
         {
             img: "./img/eef3.jpg",
+            afzender: "Eef Hoos",
             message: "Mensen konden voor 2500€ een incasso bij mij aanvragen dan ging ik degene bij wie ik een incasso moet plegen onderzoeken en dat kost geld. Als het dan zover was dan ging ik incaseren."
         },
         {
             img: "./img/eef3.jpg",
+            afzender: "Eef Hoos",
             message: "Vandaag weer een incasso gedaan die verliep heel zoepel https://www.youtube.com/watch?v=YV1MjBP05wg"
         },
         {
             img: "./img/eef3.jpg",
+            afzender: "Eef Hoos",
             message: "Lekker dan 2 oude werknemers van mij hebben een bom bij de haagse courant laten ontploffen. nu mag ik er voor opdraaien."
         },
         {
             img: "./img/eef3.jpg",
+            afzender: "Eef Hoos",
             message: "Vandaag rechtzaak over de bom aanslagen op de haagse courant."
         },
         {
             img: "./img/eef4.jpg",
+            afzender: "Eef Hoos",
             message: "Ik moet dus 10 jaar zitten voor iets wat ik niet heb gedaan, lekker dan."
         },
         {
             img: "./img/eef4.jpg",
+            afzender: "Eef Hoos",
             message: "Zaai hier."
         },
         {
             img: "./img/eef4.jpg",
+            afzender: "Eef Hoos",
             message: "Duurt nog wel even voor dat ik hier uit ben."
         },
         {
             img: "./img/eef4.jpg",
+            afzender: "Eef Hoos",
             message: "Dat is mooi sta ik gewoon 3 jaar eerder buiten dan afgesproken."
         },
         {
             img: "./img/eef5.jpg",
+            afzender: "Eef Hoos",
             message: "Ik ben me gaan righten op het belangenbehartigen van (ex-)gedetineerden met mijn nieuwe stichting genaamt Themis."
         },
         {
             img: "./img/eef5.jpg",
+            afzender: "Eef Hoos",
             message: "Met ex-gedetineerden maakt ik nu vanuit stichting Themis zijn naam een dag blad genaamt The mis-Take naar gedetineerden in de gevangenis."
         },
         {
             img: "./img/eef5.jpg",
+            afzender: "Eef Hoos",
             message: "Er is vandaag een bom aanslag gepleegd op het kantoor van stichting Themis."
         },
         {
             img: "./img/eef5.jpg",
+            afzender: "Eef Hoos",
             message: "Ik denkt dat ik naar het buiten land ga het word mij wat te heet onder de voeten hier."
         },
         {
             img: "./img/eef6.jpg",
+            afzender: "Eef Hoos",
             message: "Zijn we dan lekker in het zwembad van mijn nieuwe villa in portugal, bleek dus dat ze hier nog geen incassobureau hadden dus ben ik er zelf incassobureau Themis begonnen. https://www.youtube.com/watch?v=86xB-jghDGs"
         }
     ]
@@ -192,6 +213,7 @@ function addExp() {
         Game.user.exp = 0;
         drawImg();
         animateProgresBar(Game.user.exp, Game.user.expNeeded);
+        updateTwitter(Game.levels[Game.user.level].message, Game.levels[Game.user.level].afzender)
     } else {
         Game.user.exp += Game.user.expPerClick;
         drawImg();
@@ -203,7 +225,7 @@ function addExp() {
 function buyUpgrade(upId) {
     for (let i = 0; i < Game.upgrades.length; i++) {
         const up = Game.upgrades[i];
-        if (up.id == upId) {
+        if (up.id == upId) {7
             if (Game.user.money >= up.cost) {
                 Game.user.money -= up.cost;
                 Game.user.moneyPerClick += up.moneyPerClickToAdd;
@@ -278,6 +300,11 @@ function updateMoney() {
 function updateCost(upId) {
     $(`#bought[value='${upId}']`).text(`x Gekocht: ${Game.upgrades[upId].amountBought}`)
     $(`#cost[value='${upId}']`).text(`Cost: €${drawNum(Game.upgrades[upId].cost)},-`)
+}
+
+function updateTwitter(bericht, afzender) {
+    $('#afzender').text(afzender);
+    $('#bericht').text(bericht);
 }
 
 function animateProgresBar(exp, expNeeded) {
