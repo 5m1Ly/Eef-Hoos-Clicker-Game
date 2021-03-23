@@ -164,7 +164,7 @@ let Game = {
         },
         {
             img: "./img/eef5.jpg",
-            afzender: "Eef Hoos",
+            afzender: "@Eef Hoos",
             message: "Ik ben me gaan righten op het belangenbehartigen van (ex-)gedetineerden met mijn nieuwe stichting genaamt Themis."
         },
         {
