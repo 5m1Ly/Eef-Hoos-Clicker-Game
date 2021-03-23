@@ -12,10 +12,12 @@ Features
   
   2. Twitter
     
-    - Here you will get message's telling about eef hoos when you level up & message from the police when they raid a warehouse or something
+    - Here you will get message's telling about eef hoos when you level up & message from the police when 
+      they raid a warehouse or something
   
   3. upgrades
     
     - With your money your able to buy upgradde's 
-    
-    - LOSS CONDITION: every time you buy a upgrade there is a 1/25 change to get raided by the police from this you will lose up to 15% of The upgrades you bought, The amount of money you will get per click, The amount of Exp you will get per click and/or The amount of money you will get per second
+    - LOSS CONDITION: every time you buy a upgrade there is a 1/25 change to get raided by the police from 
+      this you will lose up to 15% of The upgrades you bought, The amount of money you will get per click, 
+      The amount of Exp you will get per click and/or The amount of money you will get per second
