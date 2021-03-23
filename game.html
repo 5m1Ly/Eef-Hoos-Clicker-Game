@@ -12,6 +12,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/style.css">
 
     <script src="./js/jquery/jquery.js"></script>
     <script src="./js/game.js"></script>
@@ -20,62 +21,89 @@
 </head>
 <body>
     <div class="container">
-        <div class="row">
-            <div class="col-md-6 top_left">
-                <div class="row p-3 box">
-                    <div class="col-12">
-                        <h2>Upgrades</h2>
-                    </div>
-                    <div class="col-12">
-                        <div class="row justify-content-around" id="buttonBox">
-                            <!-- upgrade buttons -->
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <div class="row p-2 upgrade-box">
+                    <div class="col-12 py-2 px-4 inner-upgrade-box">
+                        <div class="row">
+                            <div class="col-6">
+                                <h2>Upgrades</h2>
+                            </div>
+                            <div class="col-6">
+                                <h2 id="displayEpc">epc:</h2>
+                            </div>
+                            <div class="col-6">
+                                <h2 id="displayMps">mps:</h2>
+                            </div>
+                            <div class="col-6">
+                                <h2 id="displayMpc">mpc:</h2>
+                            </div>
+                        </div>
+                        <div class="row content-upgrade-box">
+                            <div class="col-12">
+                                <div class="row py-3 justify-content-around" id="buttonBox">
+                                    <!-- upgrade buttons -->
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="row p-3 box">
-                    <div class="col-12">
-                        <h2>Progress</h2>
-                    </div>
-                    <div class="col-12 col-xxl-6">
+                <div class="row p-2 ms-1 mb-3 progress-box">
+                    <div class="col-12 px-4 py-2 inner-progress-box">
                         <div class="row">
-                            <div class="col-12" id="imgBox">
-                                <!-- img gets placed here -->
+                            <div class="col-12">
+                                <h2>Progress</h2>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-12 col-xxl-6">
-                        <div class="row p-2">
-                            <div class="col-12">
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" id="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
+                        <div class="row py-2 ps-0 pe-2 content-progress-box">
+                            <div class="col-12 col-xxl-6">
                                 <div class="row">
-                                    <div class="col-8">
-                                        <p class="mb-0" id="exp">exp: 0/500</p>
-                                    </div>
-                                    <div class="col-4">
-                                        <p class="mb-0" id="level">Level: 1</p>
+                                    <div class="col-12" id="imgBox">
+                                        <!-- img gets placed here -->
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 text-center pt-4 pb-4">
-                                <h3 id="money">€0,-</h3>
+                            <div class="col-12 col-xxl-6">
+                                <div class="row px-3 ms-1">
+                                    <div class="col-12">
+                                        <div class="progress bg-secondary">
+                                            <div class="progress-bar" role="progressbar" id="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-8">
+                                                <p class="mb-0 ms-1" id="exp">exp: 0/500</p>
+                                            </div>
+                                            <div class="col-4">
+                                                <p class="mb-0" id="level">Level: 1</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 text-center pt-4 pb-4">
+                                        <h3 id="money">€0,-</h3>
+                                    </div>
+                                    <input type="button" value="incasso" class="col-12 py-1 upgradeBtn text-white" onclick="incasso()">
+                                </div>
                             </div>
-                            <input type="button" value="incasso" class="col-12 btn btn-primary" onclick="incasso()">
                         </div>
                     </div>
                 </div>
-                <div class="row p-3 box">
-                    <div class="col-10">
-                        <h2 id="afzender">@Eef Hoos</h2>
-                    </div>
-                    <div class="col-1 offset-lg-1">
-                        <i class="fa fa-twitter fa-3x"></i>
-                    </div>
-                    <div class="col-12">
-                        <p id="bericht">Hoe werkt dit pleuris ding dan</p>
+                <div class="row p-2 ms-1 twitter-box">
+                    <div class="col-12 py-2 px-4 inner-twitter-box">
+                        <div class="row">
+                            <div class="col-10">
+                                <h2 id="afzender">@Eef Hoos</h2>
+                            </div>
+                            <div class="col-1 ms-3">
+                                <i class="fa fa-twitter fa-3x"></i>
+                            </div>
+                        </div>
+                        <div class="row p-2 content-twitter-box">
+                            <div class="col-12">
+                                <p class="mb-1" id="bericht">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, debitis quidem quasi aut ad repudiandae dolor est ea eius cupiditate esse aliquam beatae molestiae nobis rem magni voluptate? Nam sapiente hic alias delectus, rem laudantium! Quos praesentium fuga cumque iusto.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

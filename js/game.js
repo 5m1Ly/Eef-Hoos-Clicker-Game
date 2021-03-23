@@ -6,16 +6,16 @@ let Game = {
         level: 1,
         exp: 0,
         expNeeded: 500,
-        expPerClick: 1
+        epc: 1
     },
     upgrades: [
         {
             id: 0,
             name: "Auto Diefstal",
             icon: "fa fa-car fa-3x",
-            moneyPerClickToAdd: 0.5,
-            moneyPerSecondToAdd: 0,
-            expPerClickToAdd: 1,
+            mpcToAdd: 0.5,
+            mpsToAdd: 0,
+            epcToAdd: 1,
             cost: 10,
             amountBought: 0,
             message: "We hebben een inval gedaan bij een lood waarbij een aantal gestolen auto's zijn aangetroffen. deze werden vermoedelijk gebruikt voor bom aanslagen bij wanbetalers in het criminele circuit."
@@ -24,9 +24,9 @@ let Game = {
             id: 1,
             name: "Inbreken",
             icon: "fa fa-home fa-3x",
-            moneyPerClickToAdd: 0,
-            moneyPerSecondToAdd: 1,
-            expPerClickToAdd: 1,
+            mpcToAdd: 0,
+            mpsToAdd: 1,
+            epcToAdd: 1,
             cost: 500,
             amountBought: 0,
             message: "We hebben vanochtend een inbreker gepakt met een tas vol met siraden, goud, autoradio's, en contant geld."
@@ -35,9 +35,9 @@ let Game = {
             id: 2,
             name: "Transport Verzekering",
             icon: "fa fa-truck fa-3x",
-            moneyPerClickToAdd: 5,
-            moneyPerSecondToAdd: 0,
-            expPerClickToAdd: 2.5,
+            mpcToAdd: 5,
+            mpsToAdd: 0,
+            epcToAdd: 2.5,
             cost: 1000,
             amountBought: 0,
             message: "We hebben vanavond rond 23:00 vier vrachtwagens staande gehouden. er was een vuurgevecht alle verdachten zijn aangehouden en in de vrachtwagens zijn 200kg aan hajs gevonden waarschijnlijk was dit een transport van de beruchte klaas bruinsma."
@@ -46,9 +46,9 @@ let Game = {
             id: 3,
             name: "Witwas Operatie",
             icon: "fa fa-building-o fa-3x",
-            moneyPerClickToAdd: 0,
-            moneyPerSecondToAdd: 5,
-            expPerClickToAdd: 2.5,
+            mpcToAdd: 0,
+            mpsToAdd: 5,
+            epcToAdd: 2.5,
             cost: 5000,
             amountBought: 0,
             message: "We zijn vanochten om 3:40 bij 4 panden binnen gevallen die mogelijk betrokken zijn bij grote witwas operatie's"
@@ -57,9 +57,9 @@ let Game = {
             id: 4,
             name: "Emperium Uitbrijding",
             icon: "fa fa-users fa-3x",
-            moneyPerClickToAdd: 25,
-            moneyPerSecondToAdd: 0,
-            expPerClickToAdd: 5,
+            mpcToAdd: 25,
+            mpsToAdd: 0,
+            epcToAdd: 5,
             cost: 10000,
             amountBought: 0,
             message: "We hebben vandaag 3 verdachte aangehouden die betrokken waren bij het importeren van de explosive stof cemtex."
@@ -68,9 +68,9 @@ let Game = {
             id: 5,
             name: "Explosiven inkoop",
             icon: "fa fa-bomb fa-3x",
-            moneyPerClickToAdd: 0,
-            moneyPerSecondToAdd: 25,
-            expPerClickToAdd: 5,
+            mpcToAdd: 0,
+            mpsToAdd: 25,
+            epcToAdd: 5,
             cost: 50000,
             amountBought: 0,
             message: "We zijn vandaag bij een loods binnen gevallen waarbij 6 containers zijn aangetroffen met profesionele bommen."
@@ -207,7 +207,7 @@ function addExp() {
         animateProgresBar(Game.user.exp, Game.user.expNeeded);
         updateTwitter(Game.levels[Game.user.level].message, Game.levels[Game.user.level].afzender)
     } else {
-        Game.user.exp += Game.user.expPerClick;
+        Game.user.exp += Game.user.epc;
         drawImg();
         animateProgresBar(Game.user.exp, Game.user.expNeeded);
     }
@@ -229,27 +229,29 @@ function buyUpgrade(upId) {
                 if (Game.gameValues.lossOn.includes(lossVal)) {
                     Game.user.mpc -= ((Game.user.mpc/100)*lossPercent);
                     Game.user.mps -= ((Game.user.mps/100)*lossPercent);
-                    Game.user.expPerClick -= ((Game.user.expPerClick/100)*lossPercent);
+                    Game.user.epc -= ((Game.user.epc/100)*lossPercent);
                     up.amountBought -= ((up.amountBought/100)*lossPercent);
 
                     let afzender = "@Politie"
-                    let newMessage = up.message + ` Je hebt nu ${lossPercent}% minder inkomen & van deze upgrade verloren.`
+                    let newMessage = up.message + ` Je bent ${lossPercent}% van je upgrade kwijt geraakt (Geld per incasso, Geld per second, exp per click & hoeveelheid gekocht)`
 
                     updateTwitter(newMessage, afzender);
 
                     addExp();
+                    updateStats()
                     updateMoney();
                     updateCost(upId);
                 } else {
                     Game.user.money -= up.cost;
-                    Game.user.mpc += up.moneyPerClickToAdd;
-                    Game.user.mps += up.moneyPerSecondToAdd;
-                    Game.user.expPerClick += up.expPerClickToAdd;
+                    Game.user.mpc += up.mpcToAdd;
+                    Game.user.mps += up.mpsToAdd;
+                    Game.user.epc += up.epcToAdd;
                     
                     up.cost *= Game.gameValues.upgradeCostMultiplier;
                     up.amountBought++;
     
                     addExp();
+                    updateStats()
                     updateMoney();
                     updateCost(upId);
                 }
@@ -264,12 +266,12 @@ function drawButtons() {
     for (let i = 0; i < Game.upgrades.length; i++) {
         const button = Game.upgrades[i];
         let newButton = `
-            <button class="col-11 col-lg-5 mb-2" id="upgrade" value="${button.id}" onclick="buyUpgrade(this.value)">
+            <button class="col-11 col-lg-5 mb-2 upgradeBtn" id="upgrade" value="${button.id}" onclick="buyUpgrade(this.value)">
                 <div class="row">
                     <div class="col-2 my-auto pt-2 pb-2">
                         <i class="${button.icon}" aria-hidden="true"></i>
                     </div>
-                    <div class="col-10 my-auto pt-2">
+                    <div class="col-10 my-auto pt-2 text-white">
                         <p id="bought" value="${button.id}">x Gekocht: ${button.amountBought}</p>
                         <p id="cost" value="${button.id}">Cost: €${drawNum(button.cost)},-</p>
                     </div>
@@ -298,10 +300,10 @@ function drawImg() {
         if (i === userLevel) {
             if ($('#imgBox').children().length > 0) {
                 $('#img').remove();
-                let newImgTag = `<img src="${imgSource}" id="img" alt="Eef_Hoos_afbeelding_${i}">`
+                let newImgTag = `<img src="${imgSource}" id="img" class="img" alt="Eef_Hoos_afbeelding_${i}">`
                 $('#imgBox').append(newImgTag);
             } else {
-                let newImgTag = `<img src="${imgSource}" id="img" alt="Eef_Hoos_afbeelding_${i}">`
+                let newImgTag = `<img src="${imgSource}" id="img" class="img" alt="Eef_Hoos_afbeelding_${i}">`
                 $('#imgBox').append(newImgTag);
             }
         }
@@ -310,6 +312,12 @@ function drawImg() {
 
 function updateMoney() {
     $('#money').text(`€${drawNum(Game.user.money)},-`);
+}
+
+function updateStats() {
+    $('#displayEpc').text(`Epc: ${Math.floor(Game.user.epc)}`)
+    $('#displayMps').text(`Mps: ${Math.floor(Game.user.mps)}`)
+    $('#displayMpc').text(`Mpc: ${Math.floor(Game.user.mpc)}`)
 }
 
 function updateCost(upId) {
@@ -335,7 +343,7 @@ $(document).ready(function() {
     drawButtons();
     drawImg();
     updateCost(0, 1, 2, 3, 4, 5);
-    
+    updateStats()
     addExp();
 });
 
