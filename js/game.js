@@ -266,8 +266,8 @@ function drawButtons() {
     for (let i = 0; i < Game.upgrades.length; i++) {
         const button = Game.upgrades[i];
         let newButton = `
-            <button class="col-11 col-lg-5 mb-2 upgradeBtn" id="upgrade" value="${button.id}" onclick="buyUpgrade(this.value)">
-                <div class="row">
+            <button class="col-11 col-lg-5 mb-2" value="${button.id}" onclick="buyUpgrade(this.value)">
+                <div class="row" id="upgradeBtn">
                     <div class="col-2 my-auto pt-2 pb-2">
                         <i class="${button.icon}" aria-hidden="true"></i>
                     </div>

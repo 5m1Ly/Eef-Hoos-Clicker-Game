@@ -4,61 +4,61 @@ body {
     background-color: #003459;
 }
 
-.upgrade-box {
+#upgrade-box {
     background-color: #FCA311;
     border-radius: 10px;
     box-shadow: 0 1px 2px 0 rgba(31, 31, 31, 0.842), 0 1px 2px 0 rgba(31, 31, 31, 0.842);
 }
 
-.inner-upgrade-box {
+#inner-upgrade-box {
     background-color: #007EA7;
     border-radius: 10px;
     box-shadow: 0 1px 2px 0 rgba(31, 31, 31, 0.842), 0 1px 2px 0 rgba(31, 31, 31, 0.842);
 }
 
-.content-upgrade-box {
+#content-upgrade-box {
     background-color: #e6e6e6;
     border-radius: 10px;
     box-shadow: 0 1px 2px 0 rgba(31, 31, 31, 0.842), 0 1px 2px 0 rgba(31, 31, 31, 0.842);
 }
 
-.progress-box {
+#progress-box {
     background-color: #FCA311;
     border-radius: 10px;
     box-shadow: 0 1px 2px 0 rgba(31, 31, 31, 0.842), 0 1px 2px 0 rgba(31, 31, 31, 0.842);
 }
 
-.inner-progress-box {
+#inner-progress-box {
     background-color: #007EA7;
     border-radius: 10px;
     box-shadow: 0 1px 2px 0 rgba(31, 31, 31, 0.842), 0 1px 2px 0 rgba(31, 31, 31, 0.842);
 }
 
-.content-progress-box {
+#content-progress-box {
     background-color: #e6e6e6;
     border-radius: 10px;
     box-shadow: 0 1px 2px 0 rgba(31, 31, 31, 0.842), 0 1px 2px 0 rgba(31, 31, 31, 0.842);
 }
 
-.twitter-box {
+#twitter-box {
     background-color: #FCA311;
     border-radius: 10px;
     box-shadow: 0 1px 2px 0 rgba(31, 31, 31, 0.842), 0 1px 2px 0 rgba(31, 31, 31, 0.842);
 }
 
-.inner-twitter-box {
+#inner-twitter-box {
     background-color: #007EA7;
     border-radius: 10px;
     box-shadow: 0 1px 2px 0 rgba(31, 31, 31, 0.842), 0 1px 2px 0 rgba(31, 31, 31, 0.842);
 }
 
-.content-twitter-box {
+#content-twitter-box {
     background-color: #e6e6e6;
     border-radius: 10px;
     box-shadow: 0 1px 2px 0 rgba(31, 31, 31, 0.842), 0 1px 2px 0 rgba(31, 31, 31, 0.842);
 }
 
-.upgradeBtn {
+#upgradeBtn {
     background-color: #007EA7;
     border: none;
     border-radius: 10px;
